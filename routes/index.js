@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  // res.render('index', { title: 'Express' });
+  res.send('<h1>AlgoVisualizer Backend</h1> <br> <h3> Status: Running </h3>');
 });
 
 /* GET backend status. */
