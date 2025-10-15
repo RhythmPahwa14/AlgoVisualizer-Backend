@@ -6,7 +6,7 @@
 
 **Request:**
 ```bash
-curl -X POST http://localhost:3000/auth/signup \
+curl -X POST http://localhost:3001/auth/signup \
   -H "Content-Type: application/json" \
   -d '{
     "username": "johndoe",
@@ -33,7 +33,7 @@ curl -X POST http://localhost:3000/auth/signup \
 
 **Request:**
 ```bash
-curl -X POST http://localhost:3000/auth/login \
+curl -X POST http://localhost:3001/auth/login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "john@example.com",
@@ -62,7 +62,7 @@ curl -X POST http://localhost:3000/auth/login \
 # Save the token from login/signup response
 TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRhYmMxMjNkZWY0NTY3ODkiLCJ1c2VybmFtZSI6ImpvaG5kb2UiLCJpYXQiOjE2OTk0MjM2MDB9.xyz"
 
-curl -X GET http://localhost:3000/users/profile \
+curl -X GET http://localhost:3001/users/profile \
   -H "Authorization: Bearer $TOKEN"
 ```
 
@@ -85,7 +85,7 @@ curl -X GET http://localhost:3000/users/profile \
 
 **Request:**
 ```bash
-curl -X POST http://localhost:3000/auth/signup \
+curl -X POST http://localhost:3001/auth/signup \
   -H "Content-Type: application/json" \
   -d '{
     "email": "john@example.com"
@@ -105,7 +105,7 @@ curl -X POST http://localhost:3000/auth/signup \
 **Request:**
 ```bash
 # Try to signup with an existing email
-curl -X POST http://localhost:3000/auth/signup \
+curl -X POST http://localhost:3001/auth/signup \
   -H "Content-Type: application/json" \
   -d '{
     "username": "anothername",
@@ -126,7 +126,7 @@ curl -X POST http://localhost:3000/auth/signup \
 
 **Request:**
 ```bash
-curl -X POST http://localhost:3000/auth/login \
+curl -X POST http://localhost:3001/auth/login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "john@example.com",
@@ -146,7 +146,7 @@ curl -X POST http://localhost:3000/auth/login \
 
 **Request:**
 ```bash
-curl -X GET http://localhost:3000/users/profile
+curl -X GET http://localhost:3001/users/profile
 ```
 
 **Response:**
@@ -161,7 +161,7 @@ curl -X GET http://localhost:3000/users/profile
 
 **Request:**
 ```bash
-curl -X GET http://localhost:3000/users/profile \
+curl -X GET http://localhost:3001/users/profile \
   -H "Authorization: Bearer invalid.token.here"
 ```
 
@@ -196,7 +196,7 @@ When integrating with a frontend or mobile application:
 ```javascript
 // Signup
 const signup = async (username, email, password) => {
-  const response = await fetch('http://localhost:3000/auth/signup', {
+  const response = await fetch('http://localhost:3001/auth/signup', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, email, password })
@@ -213,7 +213,7 @@ const signup = async (username, email, password) => {
 
 // Login
 const login = async (email, password) => {
-  const response = await fetch('http://localhost:3000/auth/login', {
+  const response = await fetch('http://localhost:3001/auth/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
@@ -231,7 +231,7 @@ const login = async (email, password) => {
 // Access protected route
 const getProfile = async () => {
   const token = localStorage.getItem('token');
-  const response = await fetch('http://localhost:3000/users/profile', {
+  const response = await fetch('http://localhost:3001/users/profile', {
     method: 'GET',
     headers: { 
       'Authorization': `Bearer ${token}`
