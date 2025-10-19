@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
+    console.log('MongoDB Connected...');
     const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/algovisualizer';
     await mongoose.connect(mongoURI);
     console.log('MongoDB Connected...');
